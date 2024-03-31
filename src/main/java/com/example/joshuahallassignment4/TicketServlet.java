@@ -30,7 +30,6 @@ public class TicketServlet extends HttpServlet {
             case "download":
                 this.downloadAttachment (request, response);
                 break;
-            case "download":
             default:
                 this.listTickets(response);
                 break;
@@ -77,10 +76,98 @@ public class TicketServlet extends HttpServlet {
         response.sendRedirect("tickets?action=view&ticketID=" + id);
     }
 
+    private void showTicketForm(HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>Create Ticket</h1>");
+        out.println("form action='ticket-servlet' method='post' enctype='multipart/form-data'>");
+        out.println("Customer Name: <input type='text' name='customerName'><br>");
+        out.println("Subject: <input type='text' name='subject'><br>");
+        out.println("Body: <textarea name='body'></textarea><br>");
+        out.println("Attachment: <input type='file' name='file1'><br>");
+        out.println("<input type='hidden' name='action' value='create'>");
+        out.println("<input type='submit' value='Submit'>");
+        out.println("</form>");
+        out.println("</body></html>");
+    }
+
+    private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws
+            ServletException, IOException {
+        int ticketId = Integer.parseInt(request.getParameter("ticketID"));
+        Ticket ticket = ticketDatabase.get(ticketId);
+        if (ticket != null) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+            out.println("<html><body>");
+            out.println("<h1>Ticket Details</h1>");
+            out.println("<p>Customer Name: " + ticket.getCustomername() + "</p>");
+            out.println("<p>Subject: " + ticket.getSubject() + "</p>");
+            out.println("<p>Body: " + ticket.getBody() + "</p>");
+            out.println("<p>Attachments:</p>");
+            for (Attachment attachment : ticket.getAttachments()) {
+                out.println("<p>" + attachment.getName() + "</p>");
+                out.println("<a href='ticket-servlet?action=download&ticketID=" + ticketId + "&attachmentIndex=" + ticket.getAttachments().indexOf(attachment) + "'>Download</a>");
+            }
+            out.println("</body></html>");
+        } else {
+            response.sendRedirect("ticket-servlet");
+        }
+    }
+
+    private void downloadAttachment(HttpServletRequest request, HttpServletResponse response) throws
+            ServletException, IOException{
+        int ticketId = Integer.parseInt(request.getParameter("ticketID"));
+        int attachmentIndex = Integer.parseInt(request.getParameter("attachmentIndex"));
+
+        Ticket ticket = ticketDatabase.get(ticketId);
+        if (ticket != null && attachmentIndex >= 0 && attachmentIndex < ticket.getAttachments().size()) {
+            Attachment attachment = ticket.getAttachments().get(attachmentIndex);
+            if (attachment != null) {
+                response.setContentType("application/octet-stream");
+                response.setHeader("Content-Disposition", "attachment; filename=\"" + attachment.getName() + "\"");
+                try (OutputStream out = response.getOutputStream()) {
+                    out.write(attachment.getContents());
+                }
+            } else {
+                response.sendRedirect("ticket-servlet");
+            }
+        } else {
+            response.sendRedirect("ticket-servlet");
+        }
+    }
+
+    private void listTickets(HttpServletResponse response) throws
+            ServletException, IOException{
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>List of Tickets</h1>");
+        out.println("<ul>");
+        for (Map.Entry<Integer, Ticket> entry : ticketDatabase.entrySet()) {
+            out.println("<li><a href='ticket-servlet?action=view&ticketID=" + entry.getKey() + "'>Ticket #" + entry.getKey() + "</a></li>");
+        }
+        out.println("</ul>");
+        out.println("</body></html>");
+    }
+
     private Attachment processAttachment (Part filePart) throws IOException{
         InputStream inputStream = filePart.getInputStream();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
+        int read;
+        final byte[] bytes = new byte[1024];
+
+        while ((read = inputStream.read(bytes)) !=  -1){
+            outputStream.write(bytes, 0, read);
+        }
+
+        Attachment attachment = new Attachment();
+
+        attachment.setName(filePart.getSubmittedFileName());
+        attachment.getContents();
+
+        return attachment;
     }
 
 

@@ -1,7 +1,5 @@
 package com.example.joshuahallassignment4;
 
-import java.util.Arrays;
-
 public class Attachment {
     private String name;
     private byte[] contents;
