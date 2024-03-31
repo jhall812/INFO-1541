@@ -20,21 +20,21 @@ public class TicketServlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action == null)
             action = "list";
-//        switch (action){
-//            case "create":
-//                this.showTicketForm(response);
-//                break;
-//            case "view":
-//                this.viewTicket(request, response);
-//                break;
-//            case "download":
-//                this.downloadAttachment (request, response);
-//                break;
-//            case "download":
-//            default:
-//                this.listTickets(response);
-//                break;
-//        }
+        switch (action){
+            case "create":
+                this.showTicketForm(response);
+                break;
+            case "view":
+                this.viewTicket(request, response);
+                break;
+            case "download":
+                this.downloadAttachment (request, response);
+                break;
+            case "download":
+            default:
+                this.listTickets(response);
+                break;
+        }
     }
 
     @Override

@@ -87,7 +87,7 @@
       <recent name="com.example.joshuahallassignment4" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TicketTest">
+  <component name="RunManager">
     <configuration name="TicketTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="joshuahall-Assignment4" />
       <extension name="coverage">
