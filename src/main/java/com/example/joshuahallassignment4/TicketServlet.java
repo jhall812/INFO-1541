@@ -59,6 +59,29 @@ public class TicketServlet extends HttpServlet {
         Ticket ticket = new Ticket();
         ticket.setCustomername(request.getParameter("customerName"));
         ticket.setSubject(request.getParameter("subject"));
+        ticket.setBody(request.getParameter("body"));
+
+        Part filepart = request.getPart("file1");
+        if (filepart != null){
+            Attachment attachment = this.processAttachment(filepart);
+            if (attachment != null)
+                ticket.addAttachment(attachment);
+        }
+
+        int id;
+        synchronized (this){
+            id = this.TICKET_ID_SEQUENCE++;
+            this.ticketDatabase.put(id, ticket);
+        }
+
+        response.sendRedirect("tickets?action=view&ticketID=" + id);
+    }
+
+    private Attachment processAttachment (Part filePart) throws IOException{
+        InputStream inputStream = filePart.getInputStream();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
     }
+
+
 }
