@@ -1,5 +1,6 @@
 package com.example.joshuahallassignment4;
 
+import com.beust.ah.A;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -14,6 +15,24 @@ public class TicketTest {
         ticket = new Ticket();
     }
 
+    @Test
+    public void testTicketConstructorNoParms()
+    {
+        Ticket testTicket = new Ticket();
+        assertNotNull(testTicket);
+        assertEquals(testTicket.getCustomername(), "");
+    }
+
+    @Test
+    public void testTicketConstructorWithParms()
+    {
+        ArrayList<Attachment> attachments = new ArrayList<>();
+        Attachment bat = new Attachment();
+        attachments.add(bat);
+        Ticket testTicket = new Ticket("Jim Gordon", "Batman repair", "Batmobile lost a wheel", attachments);
+        assertNotNull(testTicket);
+        assertEquals(testTicket.getCustomername(), "Jim Gordon");
+    }
     @Test
     public void testCustomerName() {
         String customerName = "John Doe";
@@ -42,6 +61,16 @@ public class TicketTest {
         attachments.add(attachment);
         ticket.setAttachments(attachments);
         assertEquals(attachments, ticket.getAttachments());
+        assertEquals(1, ticket.getNumberOfAttachments());
+    }
+
+    @Test
+    public void testGetIndividualAttachment(){
+        List<Attachment> attachments = new ArrayList<>();
+        Attachment attachment = new Attachment();
+        attachments.add(attachment);
+        ticket.setAttachments(attachments);
+        assertEquals(attachment, ticket.getIndividualAttachment(1));
         assertEquals(1, ticket.getNumberOfAttachments());
     }
 

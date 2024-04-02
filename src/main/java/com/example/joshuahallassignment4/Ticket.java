@@ -11,14 +11,20 @@ public class Ticket {
     private List<Attachment> attachments;
 
     public Ticket(){
+        this.customername = "";
+        this.subject = "";
+        this.body = "";
         this.attachments = new ArrayList<>();
     }
 
-    public Ticket(String customername, String subject, String body){
+    public Ticket(String customername, String subject, String body, ArrayList<Attachment> attachments){
         this.customername = customername;
         this.subject = subject;
         this.body = body;
-        this.attachments = new ArrayList<>();
+        if (attachments == null)
+            this.attachments = new ArrayList<>();
+        else
+            this.attachments = attachments;
     }
 
     public String getCustomername(){
@@ -47,6 +53,14 @@ public class Ticket {
 
     public List<Attachment> getAttachments(){
         return attachments;
+    }
+
+    public Attachment getIndividualAttachment(int pos)
+    {
+        if (this.attachments.size() >= pos-1)
+            return this.attachments.get(pos-1);
+        else
+            return null;
     }
 
     public void setAttachments(List<Attachment> attachments){

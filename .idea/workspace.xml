@@ -11,9 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0cce74b4-5747-4bb3-a6d9-974ec4468751" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/Attachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/Attachment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/Ticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/TicketServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/TicketServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/AttachmentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/AttachmentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/TicketTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/TicketTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,26 +55,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.37514383",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.37514383&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -94,6 +95,22 @@
       <option name="PACKAGE_NAME" value="com.example.joshuahallassignment4" />
       <option name="MAIN_CLASS_NAME" value="com.example.joshuahallassignment4.TicketTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TicketTest.testGetIndividualAttachment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="joshuahall-Assignment4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.joshuahallassignment4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.joshuahallassignment4" />
+      <option name="MAIN_CLASS_NAME" value="com.example.joshuahallassignment4.TicketTest" />
+      <option name="METHOD_NAME" value="testGetIndividualAttachment" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,6 +187,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TicketTest.testGetIndividualAttachment" />
         <item itemvalue="JUnit.TicketTest" />
         <item itemvalue="JUnit.TicketTest.testgetNumberOfAttachments" />
         <item itemvalue="JUnit.TicketTest.testgetBody" />
@@ -186,10 +204,22 @@
       <updated>1711722559104</updated>
       <workItem from="1711722560169" duration="3782000" />
       <workItem from="1711726376713" duration="5190000" />
+      <workItem from="1711910270408" duration="7005000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

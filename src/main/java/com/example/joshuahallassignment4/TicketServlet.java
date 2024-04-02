@@ -17,6 +17,31 @@ public class TicketServlet extends HttpServlet {
     @Override
     protected void doGet (HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
+        // dad stuff remove later
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Ticket support</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<label>What do you want to do?</label>");
+        out.println("<a href=\"this.showTicketForm(response)\">create</a>");
+        out.println("<a href=\"this.viewTicket(request, response)\">view</a>");
+        out.println("<a href=\"this.downloadAttachment (request, response)\">download</a>");
+        out.println("<a href=\"this.listTickets(response)\">list</a>");
+//        out.println("<input type=\"text\" id=\"choice\" name=\"choice\">");
+//        out.println("<ul>");
+//        out.println("<li>list</li>");
+//        out.println("<li>create</li>");
+//        out.println("<li>view</li>");
+//        out.println("<li>download</li>");
+//        out.println("</ul>");
+        out.println("");
+        out.println("</body>");
+        out.println("</html>");
+        // dad stuff remove later
+
         String action = request.getParameter("action");
         if (action == null)
             action = "list";
@@ -30,9 +55,8 @@ public class TicketServlet extends HttpServlet {
             case "download":
                 this.downloadAttachment (request, response);
                 break;
-            default:
+            case "list":
                 this.listTickets(response);
-                break;
         }
     }
 
@@ -95,7 +119,7 @@ public class TicketServlet extends HttpServlet {
     private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         int ticketId = Integer.parseInt(request.getParameter("ticketID"));
-        Ticket ticket = ticketDatabase.get(ticketId);
+        Ticket ticket = getTicket(ticketId);
         if (ticket != null) {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
@@ -170,5 +194,8 @@ public class TicketServlet extends HttpServlet {
         return attachment;
     }
 
+    private Ticket getTicket(int ticketId) {
+        return ticketDatabase.get(ticketId);
+    }
 
 }
