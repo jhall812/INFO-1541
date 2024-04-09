@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Ticket Form</title>
+    <title>Customer Support</title>
 </head>
 <body>
 <h1>Create New Ticket</h1>
