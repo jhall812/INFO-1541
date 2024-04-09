@@ -4,11 +4,12 @@ import java.io.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+@WebServlet(name = "TicketServlet", value = "/ticket-servlet")
 @MultipartConfig(fileSizeThreshold = 5_242_880, maxFileSize = 20_971_520L, maxRequestSize = 41_943_040L)
 public class TicketServlet extends HttpServlet {
     private volatile int TICKET_ID_SEQUENCE = 1;
@@ -20,10 +21,10 @@ public class TicketServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         if (action == null)
-            action = "create";
+            action = "list";
         switch (action){
             case "create":
-                this.showTicketForm(response);
+                this.showTicketForm(request, response);
                 break;
             case "view":
                 this.viewTicket(request, response);
@@ -32,7 +33,7 @@ public class TicketServlet extends HttpServlet {
                 this.downloadAttachment (request, response);
                 break;
             case "list":
-                this.listTickets(response);
+                this.listTickets(request, response);
         }
     }
 
@@ -76,20 +77,9 @@ public class TicketServlet extends HttpServlet {
         response.sendRedirect("tickets?action=view&ticketID=" + id);
     }
 
-    private void showTicketForm(HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>Create Ticket</h1>");
-        out.println("form action='ticket-servlet' method='post' enctype='multipart/form-data'>");
-        out.println("Customer Name: <input type='text' name='customerName'><br>");
-        out.println("Subject: <input type='text' name='subject'><br>");
-        out.println("Body: <textarea name='body'></textarea><br>");
-        out.println("Attachment: <input type='file' name='file1'><br>");
-        out.println("<input type='hidden' name='action' value='create'>");
-        out.println("<input type='submit' value='Submit'>");
-        out.println("</form>");
-        out.println("</body></html>");
+    private void showTicketForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/view/ticketForm.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws
@@ -137,18 +127,12 @@ public class TicketServlet extends HttpServlet {
         }
     }
 
-    private void listTickets(HttpServletResponse response) throws
+    private void listTickets(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException{
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>List of Tickets</h1>");
-        out.println("<ul>");
-        for (Map.Entry<Integer, Ticket> entry : ticketDatabase.entrySet()) {
-            out.println("<li><a href='ticket-servlet?action=view&ticketID=" + entry.getKey() + "'>Ticket #" + entry.getKey() + "</a></li>");
-        }
-        out.println("</ul>");
-        out.println("</body></html>");
+        request.setAttribute("ticketDatabase", ticketDatabase);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/view/listTicket.jsp");
+        dispatcher.forward(request, response);
     }
 
     private Attachment processAttachment (Part filePart) throws IOException{

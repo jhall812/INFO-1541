@@ -8,7 +8,7 @@
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
             <page-encoding>UTF-8</page-encoding>
-            <include-prelude>/index.jsp</include-prelude>
+            <include-prelude>/base.jsp</include-prelude>
             <trim-directive-whitespaces>true</trim-directive-whitespaces>
             <default-content-type>text/html</default-content-type>
         </jsp-property-group>
