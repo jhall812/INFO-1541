@@ -5,25 +5,33 @@
   Time: 03:41 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<<%--@elvariable id="ticketDatabase" type="java.util.Map<Integer, com.example.joshuahallassignment4.Ticket>"--%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>List Tickets</title>
+    <title>Customer Support</title>
 </head>
 <body>
-<h1>List of Tickets</h1>
-<if test="${not empty ticketDB}">
-    <ul>
-        <forEach var="ticketEntry" items="${ticketDB}">
-            <li>
-                <set var="ticketId" value="${ticketEntry.key}"/>
-                <set var="ticket" value="${ticketEntry.value}"/>
-                <a href="viewTicket?ticketId=${ticketId}">Ticket ID: ${ticketId}</a>
-            </li>
-        </forEach>
-    </ul>
-</if>
+<a href="<c:url value="/login?logout" />">Logout</a>
+<h2>Tickets</h2>
+<a href="<c:url value="/tickets">
+        <c:param name="action" value="create" />
+    </c:url>">Create Ticket</a><br /><br />
+
+<c:choose>
+    <c:when test="${fn:length(ticketDatabase) == 0}">
+        <i>There are no tickets in the system.</i>
+    </c:when>
+    <c:otherwise>
+        <c:forEach items="${ticketDatabase}" var="entry">
+            Ticket ${entry.key}: <a href="<c:url value="/tickets">
+                    <c:param name="action" value="view" />
+                    <c:param name="ticketId" value="${entry.key}" />
+                </c:url>"><c:out value="${entry.value.subject}" /></a>
+            (customer: <c:out value="${entry.value.customerName}" />)<br />
+        </c:forEach>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

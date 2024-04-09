@@ -27,11 +27,11 @@ public class Ticket {
             this.attachments = attachments;
     }
 
-    public String getCustomername(){
+    public String getCustomerName(){
         return customername;
     }
 
-    public void setCustomername(String customername){
+    public void setCustomerName(String customername){
         this.customername = customername;
     }
 

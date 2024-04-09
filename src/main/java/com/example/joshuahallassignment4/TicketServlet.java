@@ -57,7 +57,7 @@ public class TicketServlet extends HttpServlet {
     private void createTicket (HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         Ticket ticket = new Ticket();
-        ticket.setCustomername(request.getParameter("customerName"));
+        ticket.setCustomerName(request.getParameter("customerName"));
         ticket.setSubject(request.getParameter("subject"));
         ticket.setBody(request.getParameter("body"));
 
@@ -91,7 +91,7 @@ public class TicketServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("<html><body>");
             out.println("<h1>Ticket Details</h1>");
-            out.println("<p>Customer Name: " + ticket.getCustomername() + "</p>");
+            out.println("<p>Customer Name: " + ticket.getCustomerName() + "</p>");
             out.println("<p>Subject: " + ticket.getSubject() + "</p>");
             out.println("<p>Body: " + ticket.getBody() + "</p>");
             out.println("<p>Attachments:</p>");

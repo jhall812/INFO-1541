@@ -20,7 +20,7 @@ public class TicketTest {
     {
         Ticket testTicket = new Ticket();
         assertNotNull(testTicket);
-        assertEquals(testTicket.getCustomername(), "");
+        assertEquals(testTicket.getCustomerName(), "");
     }
 
     @Test
@@ -31,13 +31,13 @@ public class TicketTest {
         attachments.add(bat);
         Ticket testTicket = new Ticket("Jim Gordon", "Batman repair", "Batmobile lost a wheel", attachments);
         assertNotNull(testTicket);
-        assertEquals(testTicket.getCustomername(), "Jim Gordon");
+        assertEquals(testTicket.getCustomerName(), "Jim Gordon");
     }
     @Test
     public void testCustomerName() {
         String customerName = "John Doe";
-        ticket.setCustomername(customerName);
-        assertEquals(customerName, ticket.getCustomername());
+        ticket.setCustomerName(customerName);
+        assertEquals(customerName, ticket.getCustomerName());
     }
 
     @Test

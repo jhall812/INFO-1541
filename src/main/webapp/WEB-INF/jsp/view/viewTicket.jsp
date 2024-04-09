@@ -6,26 +6,31 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--@elvariable id="ticketId" type="java.lang.String"--%>
+<%--@elvariable id="ticket" type="com.example.joshuahallassignment4.Ticket"--%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>View Ticket</title>
+    <title>Customer Support</title>
 </head>
 <body>
-<h1>View Ticket</h1>
-<if test="${ticket != null}">
-    <p>Ticket ID: ${ticketId}</p>
-    <p>Customer Name: ${ticket.customerName}</p>
-    <p>Subject: ${ticket.subject}</p>
-    <p>Body: ${ticket.body}</p>
-    <if test="${ticket.numberOfAttachments > 0}">
-        <h2>Attachments:</h2>
-        <forEach var="attachment" items="${ticket.attachments}">
-            <p>Attachment Name: ${attachment.name}</p>
-            <!-- Display or download attachment link -->
-        </forEach>
-    </if>
-</if>
+<a href="<c:url value="/login?logout" />">Logout</a>
+<h2>Ticket #${ticketId}: <c:out value="${ticket.subject}" /></h2>
+<i>Customer Name - <c:out value="${ticket.customerName}" /></i><br /><br />
+<c:out value="${ticket.body}" /><br /><br />
+
+<c:if test="${ticket.numberOfAttachments > 0}">
+    Attachments:
+    <c:forEach items="${ticket.attachments}" var="attachment" varStatus="status">
+        <c:if test="${!status.first}">, </c:if>
+        <a href="<c:url value="/tickets">
+                <c:param name="action" value="download" />
+                <c:param name="ticketId" value="${ticketId}" />
+                <c:param name="attachment" value="${attachment.name}" />
+            </c:url>"><c:out value="${attachment.name}" /></a>
+    </c:forEach><br /><br />
+</c:if>
+
+<a href="<c:url value="/tickets" />">Return to list tickets</a>
 </body>
 </html>
