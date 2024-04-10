@@ -18,7 +18,7 @@
     <li><a href="<c:url value="/ticket-servlet?action=create" />">Create Ticket</a></li>
     <li><a href="<c:url value="/ticket-servlet?action=list" />">List Tickets</a></li>
     <li><a href="<c:url value="/ticket-servlet?action=view"/>">View Tickets</a></li>
-    <!-- Add more menu items as needed -->
+    <li><a href="viewTicket.jsp">view Tickets</a></li>
 </ul>
 </body>
 </html>

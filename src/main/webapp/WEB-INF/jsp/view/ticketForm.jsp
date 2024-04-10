@@ -6,29 +6,30 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Customer Support</title>
 </head>
 <body>
-<h1>Create New Ticket</h1>
-<form action="ticket-servlet" method="post" enctype="multipart/form-data">
-    <label for="customerName">Customer Name:</label>
-    <input type="text" id="customerName" name="customerName" required><br><br>
+    <h2>Create a Ticket</h2>
+    <form method="POST" action="tickets" enctype="multipart/form-data">
+        <input type="hidden" name="action" value="create"/>
 
-    <label for="subject">Subject:</label>
-    <input type="text" id="subject" name="subject" required><br><br>
+        Your Name<br/>
+        <input type="text" name="customerName"><br/><br/>
 
-    <label for="body">Body:</label><br>
-    <textarea id="body" name="body" rows="4" cols="50" required></textarea><br><br>
+        Subject<br/>
+        <input type="text" name="subject"><br/><br/>
 
-    <label for="attachment">Attachment:</label>
-    <input type="file" id="attachment" name="file1"><br><br>
+        Body<br/>
+        <textarea name="body" rows="5" cols="30"></textarea><br/><br/>
 
-    <input type="hidden" name="action" value="create">
-    <input type="submit" value="Submit">
-</form>
+        <b>Attachments</b><br/>
+        <input type="file" name="file1"/><br/><br/>
+
+        <input type="submit" value="Submit"/>
+    </form>
 </body>
 </html>

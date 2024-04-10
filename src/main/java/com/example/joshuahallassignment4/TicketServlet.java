@@ -78,31 +78,21 @@ public class TicketServlet extends HttpServlet {
     }
 
     private void showTicketForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/view/ticketForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/view/base.jsp");
         dispatcher.forward(request, response);
     }
 
     private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
-        int ticketId = Integer.parseInt(request.getParameter("ticketID"));
-        Ticket ticket = getTicket(ticketId);
-        if (ticket != null) {
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
-            out.println("<html><body>");
-            out.println("<h1>Ticket Details</h1>");
-            out.println("<p>Customer Name: " + ticket.getCustomerName() + "</p>");
-            out.println("<p>Subject: " + ticket.getSubject() + "</p>");
-            out.println("<p>Body: " + ticket.getBody() + "</p>");
-            out.println("<p>Attachments:</p>");
-            for (Attachment attachment : ticket.getAttachments()) {
-                out.println("<p>" + attachment.getName() + "</p>");
-                out.println("<a href='ticket-servlet?action=download&ticketID=" + ticketId + "&attachmentIndex=" + ticket.getAttachments().indexOf(attachment) + "'>Download</a>");
-            }
-            out.println("</body></html>");
-        } else {
-            response.sendRedirect("ticket-servlet");
-        }
+        String idString = request.getParameter("ticketId");
+        Ticket ticket = this.getTicket(Integer.parseInt(idString));
+        if(ticket == null)
+            return;
+
+        request.setAttribute("ticketId", idString);
+        request.setAttribute("ticket", ticket);
+        request.getRequestDispatcher("/WEB-INF/jsp/view/viewTicket.jsp")
+                .forward(request, response);
     }
 
     private void downloadAttachment(HttpServletRequest request, HttpServletResponse response) throws

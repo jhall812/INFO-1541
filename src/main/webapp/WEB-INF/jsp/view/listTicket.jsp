@@ -5,33 +5,38 @@
   Time: 03:41 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<<%--@elvariable id="ticketDatabase" type="java.util.Map<Integer, com.example.joshuahallassignment4.Ticket>"--%>
-<!DOCTYPE html>
+<%@ page session="false" import="java.util.Map" %>
+<%@ page import="com.example.joshuahallassignment4.Ticket" %><%
+    @SuppressWarnings("unchecked")
+    Map<Integer, Ticket> ticketDatabase =
+            (Map<Integer, Ticket>)request.getAttribute("ticketDatabase");
+%><!DOCTYPE html>
 <html>
 <head>
     <title>Customer Support</title>
 </head>
-<body>
-<a href="<c:url value="/login?logout" />">Logout</a>
-<h2>Tickets</h2>
-<a href="<c:url value="/tickets">
+    <body>
+        <h2>Tickets</h2>
+        <a href="<c:url value="/tickets">
         <c:param name="action" value="create" />
-    </c:url>">Create Ticket</a><br /><br />
-
-<c:choose>
-    <c:when test="${fn:length(ticketDatabase) == 0}">
-        <i>There are no tickets in the system.</i>
-    </c:when>
-    <c:otherwise>
-        <c:forEach items="${ticketDatabase}" var="entry">
-            Ticket ${entry.key}: <a href="<c:url value="/tickets">
+        </c:url>">Create Ticket</a><br /><br />
+        <%            if(ticketDatabase.size() == 0)
+            {
+                %><i>There are no tickets in the system.</i><%
+            }
+            else
+            {
+                for(int id : ticketDatabase.keySet())
+            {
+                String idString = Integer.toString(id);
+                Ticket ticket = ticketDatabase.get(id);
+            %>Ticket #<%= idString %>: <a href="<c:url value="/tickets">
                     <c:param name="action" value="view" />
-                    <c:param name="ticketId" value="${entry.key}" />
-                </c:url>"><c:out value="${entry.value.subject}" /></a>
-            (customer: <c:out value="${entry.value.customerName}" />)<br />
-        </c:forEach>
-    </c:otherwise>
-</c:choose>
-</body>
+                    <c:param name="ticketId" value="<%= idString %>" />
+                </c:url>"><%= ticket.getSubject() %></a> (customer:
+        <%= ticket.getCustomerName() %>)<br /><%
+                }
+            }
+        %>
+    </body>
 </html>
