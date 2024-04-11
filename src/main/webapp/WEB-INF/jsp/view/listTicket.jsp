@@ -38,5 +38,7 @@
                 }
             }
         %>
+
+        <a href="${pageContext.request.contextPath}/ticket">">Return to list tickets</a>
     </body>
 </html>

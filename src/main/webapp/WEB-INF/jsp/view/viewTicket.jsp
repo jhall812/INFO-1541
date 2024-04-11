@@ -25,7 +25,7 @@
     Attachments:
     <c:forEach items="${ticket.attachments}" var="attachment" varStatus="status">
         <c:if test="${!status.first}">, </c:if>
-        <a href="<c:url value="/tickets">
+        <a href="<c:url value="/ticket">
                 <c:param name="action" value="download" />
                 <c:param name="ticketId" value="${ticketId}" />
                 <c:param name="attachment" value="${attachment.name}" />
@@ -33,6 +33,6 @@
     </c:forEach><br /><br />
 </c:if>
 
-<a href="${pageContext.request.contextPath}/tickets">">Return to list tickets</a>
+<a href="${pageContext.request.contextPath}/ticket">">Return to list tickets</a>
 </body>
 </html>
