@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.joshuahallassignment4.Ticket" %><%--
   Created by IntelliJ IDEA.
   User: joshc
   Date: 4/8/2024
@@ -33,6 +33,6 @@
     </c:forEach><br /><br />
 </c:if>
 
-<a href="<c:url value="/tickets" />">Return to list tickets</a>
+<a href="${pageContext.request.contextPath}/tickets">">Return to list tickets</a>
 </body>
 </html>

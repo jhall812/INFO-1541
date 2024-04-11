@@ -9,7 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "TicketServlet", value = "/ticket-servlet")
+@WebServlet(name = "ticketServlet", value = "/ticket")
 @MultipartConfig(fileSizeThreshold = 5_242_880, maxFileSize = 20_971_520L, maxRequestSize = 41_943_040L)
 public class TicketServlet extends HttpServlet {
     private volatile int TICKET_ID_SEQUENCE = 1;
@@ -64,8 +64,7 @@ public class TicketServlet extends HttpServlet {
         Part filepart = request.getPart("file1");
         if (filepart != null){
             Attachment attachment = this.processAttachment(filepart);
-            if (attachment != null)
-                ticket.addAttachment(attachment);
+            ticket.addAttachment(attachment);
         }
 
         int id;
@@ -111,10 +110,10 @@ public class TicketServlet extends HttpServlet {
                     out.write(attachment.getContents());
                 }
             } else {
-                response.sendRedirect("ticket-servlet");
+                response.sendRedirect("ticket");
             }
         } else {
-            response.sendRedirect("ticket-servlet");
+            response.sendRedirect("ticket");
         }
     }
 
