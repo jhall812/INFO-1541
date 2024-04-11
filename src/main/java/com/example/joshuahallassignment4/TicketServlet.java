@@ -78,7 +78,8 @@ public class TicketServlet extends HttpServlet {
     }
 
     private void showTicketForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/view/base.jsp");
+        String ticketForm = "/WEB-INF/jsp/view/base.jsp";
+        RequestDispatcher dispatcher = request.getRequestDispatcher(ticketForm);
         dispatcher.forward(request, response);
     }
 
