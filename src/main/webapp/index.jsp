@@ -1,12 +1,18 @@
-<%--<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>--%>
-<%--<!DOCTYPE html>--%>
-<%--<html>--%>
-<%--<head>--%>
-<%--  <title>JSP - Hello World</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h1><%= "Hello World!" %></h1>--%>
-<%--<br/>--%>
-<%--<a href="hello-servlet">Hello Servlet</a>--%>
-<%--</body>--%>
-<%--</html>--%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Support Menu</title>
+</head>
+<body>
+<h1>Customer Support Menu</h1>
+<ul>
+    <li><a href="<c:url value="/ticket-servlet?action=create" />">Create Ticket</a></li>
+    <li><a href="<c:url value="/ticket-servlet?action=list" />">List Tickets</a></li>
+    <li><a href="<c:url value="/ticket-servlet?action=view"/>">View Tickets</a></li>
+    <li><a href="viewTicket.jsp">view Tickets</a></li>
+</ul>
+</body>
+</html>
+
