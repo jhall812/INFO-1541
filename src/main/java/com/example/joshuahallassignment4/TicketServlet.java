@@ -34,6 +34,7 @@ public class TicketServlet extends HttpServlet {
                 break;
             case "list":
                 this.listTickets(request, response);
+                break;
         }
     }
 
@@ -85,12 +86,13 @@ public class TicketServlet extends HttpServlet {
     private void viewTicket(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         String idString = request.getParameter("ticketId");
-        Ticket ticket = this.getTicket(Integer.parseInt(idString));
-        if(ticket == null) {
-
-            response.sendRedirect("WEB-INF/jsp/view/error.jsp");
+        if(idString == null || idString.isEmpty()){
             return;
         }
+
+        Ticket ticket = this.getTicket(Integer.parseInt(idString));
+        if(ticket == null)
+            return;
 
         request.setAttribute("ticketId", idString);
         request.setAttribute("ticket", ticket);

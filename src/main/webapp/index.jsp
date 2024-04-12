@@ -11,7 +11,7 @@
 <ul>
     <li><a href= "${pageContext.request.contextPath}/ticket?action=create">Create Ticket</a></li>
     <li><a href="${pageContext.request.contextPath}/ticket?action=list">List Tickets</a></li>
-    <li><a href="${pageContext.request.contextPath}/ticket?action=view">View Tickets</a></li>
+<%--    <li><a href="${pageContext.request.contextPath}/ticket?action=view">View Tickets</a></li>--%>
 </ul>
 </body>
 </html>
