@@ -73,7 +73,7 @@ public class TicketServlet extends HttpServlet {
             this.ticketDatabase.put(id, ticket);
         }
 
-        response.sendRedirect("tickets?action=view&ticketID=" + id);
+        response.sendRedirect("ticket?action=view&ticketId=" + id);
     }
 
     private void showTicketForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -86,8 +86,11 @@ public class TicketServlet extends HttpServlet {
             ServletException, IOException {
         String idString = request.getParameter("ticketId");
         Ticket ticket = this.getTicket(Integer.parseInt(idString));
-        if(ticket == null)
+        if(ticket == null) {
+
+            response.sendRedirect("WEB-INF/jsp/view/error.jsp");
             return;
+        }
 
         request.setAttribute("ticketId", idString);
         request.setAttribute("ticket", ticket);

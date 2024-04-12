@@ -17,9 +17,7 @@
 </head>
     <body>
         <h2>Tickets</h2>
-        <a href="<c:url value="/tickets">
-        <c:param name="action" value="create" />
-        </c:url>">Create Ticket</a><br /><br />
+        <a href="${pageContext.request.contextPath}/ticket?action=create">Create Ticket</a><br /><br />
         <%            if(ticketDatabase.size() == 0)
             {
                 %><i>There are no tickets in the system.</i><%
@@ -30,15 +28,13 @@
             {
                 String idString = Integer.toString(id);
                 Ticket ticket = ticketDatabase.get(id);
-            %>Ticket #<%= idString %>: <a href="<c:url value="/tickets">
-                    <c:param name="action" value="view" />
-                    <c:param name="ticketId" value="<%= idString %>" />
-                </c:url>"><%= ticket.getSubject() %></a> (customer:
+            %>Ticket #<%= idString %>: <a href="${pageContext.request.contextPath}/ticket?action=view">View Tickets;
+                </a> (customer:
         <%= ticket.getCustomerName() %>)<br /><%
                 }
             }
         %>
 
-        <a href="${pageContext.request.contextPath}/ticket">">Return to list tickets</a>
+        <a href="../../../index.jsp">">Return to list tickets</a>
     </body>
 </html>

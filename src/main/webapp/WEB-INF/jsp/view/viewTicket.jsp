@@ -1,4 +1,5 @@
-<%@ page import="com.example.joshuahallassignment4.Ticket" %><%--
+<%@ page import="com.example.joshuahallassignment4.Ticket" %>
+<%--
   Created by IntelliJ IDEA.
   User: joshc
   Date: 4/8/2024
@@ -6,10 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String ticketId = (String)request.getAttribute("ticketId");
-    Ticket ticket = (Ticket)request.getAttribute("ticket");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +15,8 @@
 <body>
 <a href="<c:url value="/login?logout" />">Logout</a>
 <h2>Ticket #${ticketId}: <c:out value="${ticket.subject}" /></h2>
-<i>Customer Name - <c:out value="${ticket.customerName}" /></i><br /><br />
-<c:out value="${ticket.body}" /><br /><br />
+<i>Customer Name - ${ticket.customerName}</i><br /><br />
+${ticket.body} <br /><br />
 
 <c:if test="${ticket.numberOfAttachments > 0}">
     Attachments:
@@ -33,6 +30,6 @@
     </c:forEach><br /><br />
 </c:if>
 
-<a href="${pageContext.request.contextPath}/ticket">">Return to list tickets</a>
+<a href="${pageContext.request.contextPath}/ticket?action=list">">Return to list tickets</a>
 </body>
 </html>
