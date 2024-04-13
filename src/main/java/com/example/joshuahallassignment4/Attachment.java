@@ -1,5 +1,7 @@
 package com.example.joshuahallassignment4;
 
+import java.util.Arrays;
+
 public class Attachment {
     private String name;
     private byte[] contents;
@@ -18,5 +20,13 @@ public class Attachment {
 
     public void setContents(byte[] contents){
         this.contents = contents;
+    }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "name='" + name + '\'' +
+                ", contents=" + Arrays.toString(contents) +
+                '}';
     }
 }
