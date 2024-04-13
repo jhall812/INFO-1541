@@ -7,7 +7,9 @@
 </head>
 <body>
 <h1>Customer Support Menu</h1>
-
+<a href="<c:url value='/login'>
+        <c:param name='logout'/>
+    </c:url>">Logout</a><br>
 <ul>
     <li><a href= "${pageContext.request.contextPath}/ticket?action=create">Create Ticket</a></li>
     <li><a href="${pageContext.request.contextPath}/ticket?action=list">List Tickets</a></li>

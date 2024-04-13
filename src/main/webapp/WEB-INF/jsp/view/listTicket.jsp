@@ -19,6 +19,9 @@
 </head>
 <body>
 <h2>Tickets</h2>
+<a href="<c:url value='/login'>
+        <c:param name='logout'/>
+    </c:url>">Logout</a><br>
 <a href="${pageContext.request.contextPath}/ticket?action=create">Create Ticket</a><br /><br />
 <% if(ticketDatabase.size() == 0) { %>
 <i>There are no tickets in the system.</i>
