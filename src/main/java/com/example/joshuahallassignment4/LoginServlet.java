@@ -24,11 +24,11 @@ public class LoginServlet extends HttpServlet{
         // if logout exists, log us out
         if(request.getParameter("logout") != null) {
             session.invalidate(); // logs us out
-            response.sendRedirect("login");
+            response.sendRedirect(request.getContextPath() + "/login");
             return;
         }        // check if logged in - then go to main page
         else if (session.getAttribute("username") != null) {
-            response.sendRedirect("blog");
+            response.sendRedirect(request.getContextPath() + "/ticket");
             return;
         }
 
@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet{
         else {
             session.setAttribute("username", username);
             request.changeSessionId(); // protects against session fixation attacks
-            response.sendRedirect("ticket");
+            response.sendRedirect(request.getContextPath() + "/ticket");
         }
     }
 }

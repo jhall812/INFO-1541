@@ -19,10 +19,10 @@
     <title>Customer Support</title>
 </head>
 <body>
-<h2>Ticket #<%= ticketId %>: <%= ticket.getSubject()%>  </h2>
 <a href="<c:url value='/login'>
         <c:param name='logout'/>
-    </c:url>">Logout</a><br>
+    </c:url>">Logout</a>
+<h2>Ticket #<%= ticketId %>: <%= ticket.getSubject()%>  </h2>
 <i>Customer Name - <%= ticket.getCustomerName() %></i><br /><br />
 <%= ticket.getBody() %><br /><br />
 <%
