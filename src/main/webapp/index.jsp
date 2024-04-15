@@ -6,10 +6,8 @@
     <title>Customer Support Menu</title>
 </head>
 <body>
-<a href="<c:url value='/login'/>">Login</a>
-<a href="<c:url value='/login'>
-        <c:param name='logout'/>
-    </c:url>">Logout</a>
+<a href="<%= request.getContextPath() %>/login">Login</a>
+<a href=${pageContext.request.contextPath}/login?logout=true">Logout</a>
 <h1>Customer Support Menu</h1>
 <ul>
     <li><a href= "${pageContext.request.contextPath}/ticket?action=create">Create Ticket</a></li>

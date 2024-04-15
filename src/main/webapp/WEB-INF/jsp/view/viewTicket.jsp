@@ -19,9 +19,7 @@
     <title>Customer Support</title>
 </head>
 <body>
-<a href="<c:url value='/login'>
-        <c:param name='logout'/>
-    </c:url>">Logout</a>
+<a href="${pageContext.request.contextPath}/login?logout=true">Logout</a>
 <h2>Ticket #<%= ticketId %>: <%= ticket.getSubject()%>  </h2>
 <i>Customer Name - <%= ticket.getCustomerName() %></i><br /><br />
 <%= ticket.getBody() %><br /><br />

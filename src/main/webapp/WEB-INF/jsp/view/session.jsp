@@ -12,10 +12,8 @@
     <title>Customer Support admin view</title>
 </head>
 <body>
-<a href="<c:url value='/login'/>">Login</a>
-<a href="<c:url value='/login'>
-        <c:param name='logout'/>
-    </c:url>">Logout</a>
+<a href="<%= request.getContextPath() %>/login">Login</a>
+<a href="${pageContext.request.contextPath}/login?logout=true">Logout</a>
 <h2>Sessions</h2>
 There are a total of <c:out value="${numSessions}"/> active sessions going on.
 <ul>
