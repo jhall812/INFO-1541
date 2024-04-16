@@ -21,5 +21,9 @@ You must log in to access the blog website.<br><br>
     Password: <input type="password" name="password"><br><br>
     <input type="submit" value="Log In">
 </form>
+
+<c:if test="${not empty sessionScope.username and sessionScope.username == 'admin'}">
+    <a href="${pageContext.request.contextPath}/sessions">Sessions</a>
+</c:if>
 </body>
 </html>

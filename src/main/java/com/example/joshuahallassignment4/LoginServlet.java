@@ -41,6 +41,15 @@ public class LoginServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
+        String action = request.getParameter("action");
+        if ("signup".equals(action)){
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            userDB.put(username, password);
+            response.sendRedirect(request.getContextPath() +  "/login");
+            return;
+        }
+
         // again check if already logged in
         if(session.getAttribute("username") != null) {
             response.sendRedirect("/index.jsp");
