@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet{
             return;
         }        // check if logged in - then go to main page
         else if (session.getAttribute("username") != null) {
-            response.sendRedirect(request.getContextPath() + "/ticket");
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
             return;
         }
 
@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet{
 
         // again check if already logged in
         if(session.getAttribute("username") != null) {
-            response.sendRedirect("ticket");
+            response.sendRedirect("/index.jsp");
             return;
         }
 
@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet{
         else {
             session.setAttribute("username", username);
             request.changeSessionId(); // protects against session fixation attacks
-            response.sendRedirect(request.getContextPath() + "/ticket");
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
     }
 }

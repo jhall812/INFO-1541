@@ -6,6 +6,7 @@ import java.util.Map;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -13,7 +14,7 @@ import jakarta.servlet.annotation.*;
 @MultipartConfig(fileSizeThreshold = 5_242_880, maxFileSize = 20_971_520L, maxRequestSize = 41_943_040L)
 public class TicketServlet extends HttpServlet {
     private volatile int TICKET_ID_SEQUENCE = 1;
-    private Map<Integer, Ticket> ticketDatabase = new LinkedHashMap<>();
+    private final Map<Integer, Ticket> ticketDatabase = new LinkedHashMap<>();
 
     @Override
     protected void doGet (HttpServletRequest request, HttpServletResponse response) throws
@@ -23,18 +24,10 @@ public class TicketServlet extends HttpServlet {
         if (action == null)
             action = "list";
         switch (action){
-            case "create":
-                this.showTicketForm(request, response);
-                break;
-            case "view":
-                this.viewTicket(request, response);
-                break;
-            case "download":
-                this.downloadAttachment (request, response);
-                break;
-            case "list":
-                this.listTickets(request, response);
-                break;
+            case "create" -> showTicketForm(request, response);
+            case "view" -> viewTicket(request, response);
+            case "download" -> downloadAttachment (request, response);
+            case "list" -> listTickets(request, response);
         }
     }
 
@@ -90,7 +83,7 @@ public class TicketServlet extends HttpServlet {
             return;
         }
 
-        Ticket ticket = this.getTicket(Integer.parseInt(idString));
+        Ticket ticket = this.getTicket(idString, response);
         if(ticket == null)
             return;
 
@@ -102,24 +95,28 @@ public class TicketServlet extends HttpServlet {
 
     private void downloadAttachment(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException{
-        int ticketId = Integer.parseInt(request.getParameter("ticketID"));
-        int attachmentIndex = Integer.parseInt(request.getParameter("attachmentIndex"));
+        String idString = request.getParameter("ticketId");
 
-        Ticket ticket = ticketDatabase.get(ticketId);
-        if (ticket != null && attachmentIndex >= 0 && attachmentIndex < ticket.getAttachments().size()) {
-            Attachment attachment = ticket.getAttachments().get(attachmentIndex);
-            if (attachment != null) {
-                response.setContentType("application/octet-stream");
-                response.setHeader("Content-Disposition", "attachment; filename=\"" + attachment.getName() + "\"");
-                try (OutputStream out = response.getOutputStream()) {
-                    out.write(attachment.getContents());
-                }
-            } else {
-                response.sendRedirect("ticket");
-            }
-        } else {
-            response.sendRedirect("ticket");
+        Ticket ticket = getTicket(idString, response);
+
+        String name = request.getParameter("image");
+        if(name == null){
+            response.sendRedirect("ticket?action=view&ticketId=" + idString);
         }
+
+        assert ticket != null;
+        Attachment attachment = (Attachment) ticket.getAttachments();
+        if(attachment == null){
+            response.sendRedirect("ticket?action=view&ticketId=" + idString);
+            return;
+        }
+
+        response.setHeader("Content-Disposition", "attachment; filename=" + attachment.getName());
+        response.setContentType("application/octet-stream");
+
+        ServletOutputStream out = response.getOutputStream();
+        out.write(attachment.getContents());
+
     }
 
     private void listTickets(HttpServletRequest request, HttpServletResponse response) throws
@@ -149,8 +146,28 @@ public class TicketServlet extends HttpServlet {
         return attachment;
     }
 
-    private Ticket getTicket(int ticketId) {
-        return ticketDatabase.get(ticketId);
+    private Ticket getTicket(String idString, HttpServletResponse response) throws ServletException, IOException {
+//        return ticketDatabase.get(ticketId);
+
+        if (idString == null || idString.isEmpty()) {
+            response.sendRedirect("blog");
+            return null;
+        }
+
+        try {
+            int id = Integer.parseInt(idString);
+            Ticket ticket = ticketDatabase.get(id);
+            if (ticket == null) {
+                response.sendRedirect("blog");
+                return null;
+            }
+            return ticket;
+        }
+        catch(Exception e) {
+            response.sendRedirect("blog");
+            return null;
+        }
     }
+
 
 }
