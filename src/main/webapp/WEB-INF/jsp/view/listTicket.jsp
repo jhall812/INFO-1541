@@ -21,7 +21,7 @@
 <a href="<%= request.getContextPath() %>/login">Login</a>
 <a href="${pageContext.request.contextPath}/login?logout=true">Logout</a>
 <h2>Tickets</h2>
-<a href="${pageContext.request.contextPath}/ticket?action=create">Create Ticket</a><br /><br />
+<a href="${pageContext.request.contextPath}/ticket/create">Create Ticket</a><br /><br />
 <% if(ticketDatabase.size() == 0) { %>
 <i>There are no tickets in the system.</i>
 <% } else { %>
@@ -36,6 +36,18 @@ Ticket #<%= idString %>: <a href="${pageContext.request.contextPath}/ticket?acti
 <% } %>
 <% } %>
 
-<a href="${pageContext.request.contextPath}/index.jsp">Menu</a>
+<%--<c:choose>--%>
+<%--    <c:when test="${ticketDatabase.size() == 0}">--%>
+<%--        <p>There are no tickets in the system.</p>--%>
+<%--    </c:when>--%>
+<%--    <c:otherwise>--%>
+<%--        <c:forEach var="ticket" items="${ticketDatabase}">--%>
+<%--            Blog#:&nbsp;<c:out value="${ticket.key}"/>--%>
+<%--            <a href="<c:url value='/ticket/view/${ticket.key}'/>">--%>
+<%--                <c:out value="${ticket.value.title}"/></a><br>--%>
+<%--        </c:forEach>--%>
+<%--    </c:otherwise>--%>
+<%--</c:choose>--%>
+
 </body>
 </html>

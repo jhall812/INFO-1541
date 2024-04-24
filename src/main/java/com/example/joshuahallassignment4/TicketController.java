@@ -12,70 +12,57 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.LocalDate;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 
 @Controller
-@RequestMapping("/ticket")
+@RequestMapping("ticket")
 public class TicketController {
-    private volatile int TICKET_ID_SEQUENCE = 1;
-    private Map<Integer, Ticket> TicketDB = new LinkedHashMap<>();
+    private volatile int TICKET_ID = 1;
+    private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
 
     @RequestMapping(value = {"list", ""})
     public String listTickets(Model model){
-        model.addAttribute("ticketDatabase", TicketDB);
-        return "listTickets";
+        model.addAttribute("ticketDatabase", ticketDB);
+        return "listTicket";
     }
 
-    @GetMapping("/create")
+    @GetMapping("create")
     public ModelAndView createTicket(){
         return new ModelAndView("ticketForm", "ticket", new TicketForm());
     }
 
-    @PostMapping("/create")
-    public View createTicket(@ModelAttribute("ticket") TicketForm form,
-                             @RequestParam("attachment") MultipartFile attachment ) throws IOException {
+    @PostMapping("create")
+    public View createTicket(@ModelAttribute("ticket") TicketForm form) throws IOException {
         Ticket ticket = new Ticket();
         ticket.setCustomerName(form.getCustomerName());
         ticket.setSubject(form.getSubject());
         ticket.setBody(form.getBody());
 
-        if(!attachment.isEmpty()){
-            Attachment ticketAttachment = processAttachment(attachment);
-            ticket.addAttachment(ticketAttachment);
+
+        MultipartFile file = form.getAttachment();
+        if ((file != null && !file.isEmpty())) {
+            Attachment image = new Attachment();
+            image.setName(file.getOriginalFilename());
+            image.setContents(file.getBytes());
+            ticket.addAttachment(image);
         }
 
         int id;
         synchronized(this) {
-            id = this.TICKET_ID_SEQUENCE++;
-            TicketDB.put(id, ticket);
+            id = this.TICKET_ID++;
+            ticketDB.put(id, ticket);
         }
 
-        return new RedirectView("/ticket/view?id=" + id, true, false);
+        return new RedirectView("ticket/view?id=" + TICKET_ID, true, false);
     }
 
-    private Attachment processAttachment(MultipartFile filepart) throws  IOException{
-        InputStream inputStream = filepart.getInputStream();
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-        int read;
-        final byte[] bytes = new byte[1024];
-
-        while ((read = inputStream.read(bytes)) !=  -1){
-            outputStream.write(bytes, 0, read);
-        }
-
-        Attachment attachment = new Attachment();
-        attachment.setName(filepart.getOriginalFilename());
-        attachment.getContents();
-        return attachment;
-    }
 
     @GetMapping("view/{ticketId}")
     public ModelAndView viewPost(Model model, @PathVariable("ticketId")int ticketId) {
-        Ticket ticket = TicketDB.get(ticketId);
+        Ticket ticket = ticketDB.get(ticketId);
         if (ticket == null) {
             return new ModelAndView(new RedirectView("ticket/list", true, false));
         }
@@ -84,23 +71,23 @@ public class TicketController {
         model.addAttribute("ticketId", ticketId);
         model.addAttribute("ticket", ticket);
 
-        return new ModelAndView("viewBlog");
+        return new ModelAndView("viewTicket");
 
     }
 
     @GetMapping("/{ticketId}/image/{image:.+}")
     public View downloadImage(@PathVariable("ticketId")int ticketId, @PathVariable("image") String name) {
-        Ticket ticket = TicketDB.get(ticketId);
+        Ticket ticket = ticketDB.get(ticketId);
         // no ticket
         if (ticket == null) {
-            return new RedirectView("listTickets", true, false);
+            return new RedirectView("listTicket", true, false);
         }
 
         // make sure there is an image
         TicketForm form = new TicketForm();
         Attachment image = (Attachment) form.getAttachment();
         if (image == null) {
-            return new RedirectView("listTickets", true, false);
+            return new RedirectView("listTicket", true, false);
         }
 
         // otherwise we have an image, lets download

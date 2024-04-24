@@ -16,18 +16,17 @@ You must log in to access the website.<br><br>
 <c:if test="${loginFailed == true}">
     <b><c:out value="The username or password you enteres are not correct, Please try again."></c:out></b><br>
 </c:if>
-<form:form method="POST" action="/login" modelAttribute="loginForm">
-    Username: <input type="text" name="username"><br><br>
-    Password: <input type="password" name="password"><br><br>
+<form:form method="POST" action="login" modelAttribute="loginForm">
+    <form:label path="username">Username:&nbsp;</form:label>
+    <form:input path="username"/><br><br>
+    <form:label path="password">Password:&nbsp;</form:label>
+    <form:password path="password"/><br><br>
     <input type="submit" value="Log In">
 </form:form>
 
 <c:choose>
-    <c:when test="${not empty sessionScope.username and sessionScope.username == 'admin'}">
-        <a href="${pageContext.request.contextPath}/session">Sessions</a>
-    </c:when>
     <c:otherwise>
-        <a href="${pageContext.request.contextPath}/signUp">Sign Up</a>
+        Do not have an account <a href="${pageContext.request.contextPath}/signUp">Sign Up</a> here.
     </c:otherwise>
 </c:choose>
 </body>

@@ -36,7 +36,10 @@
         }
 
 %>
+
+
 <br>
 <a href="${pageContext.request.contextPath}/ticket?action=list">Return</a>
+
 </body>
 </html>

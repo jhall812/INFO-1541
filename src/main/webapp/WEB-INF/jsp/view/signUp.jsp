@@ -12,11 +12,13 @@
 </head>
 <body>
 <h2>Sign Up</h2>
-<form method="POST" action="<c:url value='/login' />">
+<form:form method="POST" action="/login" >
     <input type="hidden" name="action" value="signup">
-    Username: <input type="text" name="username"><br><br>
-    Password: <input type="password" name="password"><br><br>
+    <form:label path="username">Username:&nbsp;</form:label>
+    <form:input path="username"/><br><br>
+    <form:label path="password">Password:&nbsp;</form:label>
+    <form:password path="password"/><br><br>
     <input type="submit" value="Sign Up">
-</form>
+</form:form>
 </body>
 </html>
