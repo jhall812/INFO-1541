@@ -150,7 +150,7 @@ public class TicketServlet extends HttpServlet {
 //        return ticketDatabase.get(ticketId);
 
         if (idString == null || idString.isEmpty()) {
-            response.sendRedirect("blog");
+            response.sendRedirect("ticekt");
             return null;
         }
 
@@ -158,13 +158,13 @@ public class TicketServlet extends HttpServlet {
             int id = Integer.parseInt(idString);
             Ticket ticket = ticketDatabase.get(id);
             if (ticket == null) {
-                response.sendRedirect("blog");
+                response.sendRedirect("ticket");
                 return null;
             }
             return ticket;
         }
         catch(Exception e) {
-            response.sendRedirect("blog");
+            response.sendRedirect("ticket");
             return null;
         }
     }
