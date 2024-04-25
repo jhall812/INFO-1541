@@ -30,7 +30,7 @@
         for(Attachment a : ticket.getAttachments()){
             if(i++ > 0)
                 System.out.print(", ");
-            %><a href="${pageContext.request.contextPath}/ticket?action=download&ticketId=<%= ticketId %>&attachment=<%= a.getName() %>"><%= a.getName() %></a><%
+            %><a href="${pageContext.request.contextPath}ticket?action=download&ticketId=<%= ticketId %>&attachment=<%= a.getName() %>"><%= a.getName() %></a><%
             }
 
         }

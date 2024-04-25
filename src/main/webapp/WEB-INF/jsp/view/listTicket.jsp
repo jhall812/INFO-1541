@@ -30,7 +30,7 @@
     String idString = Integer.toString(id);
     Ticket ticket = ticketDatabase.get(id);
 %>
-Ticket #<%= idString %>: <a href="${pageContext.request.contextPath}/ticket?action=view&ticketId=<%= idString %>">
+Ticket #<%= idString %>: <a href="${pageContext.request.contextPath}/ticket/view/ticketId=<%= idString %>">
     <%= ticket.getSubject() %>
 </a> (customer: <%= ticket.getCustomerName() %>)<br />
 <% } %>

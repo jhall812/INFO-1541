@@ -5,6 +5,6 @@
 </head>
 <body>
 <h2>An error occured or the page doesn't exist</h2>
-<br><a href="../../../index.jsp">Return to menu list</a>
+<br><a href="${pageContext.request.contextPath}/ticket/list">Return to menu list</a>
 </body>
 </html>

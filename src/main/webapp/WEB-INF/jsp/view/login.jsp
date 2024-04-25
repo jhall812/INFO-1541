@@ -26,7 +26,7 @@ You must log in to access the website.<br><br>
 
 <c:choose>
     <c:otherwise>
-        Do not have an account <a href="${pageContext.request.contextPath}/signUp">Sign Up</a> here.
+        Do not have an account <a href="${pageContext.request.contextPath}/ticket/signUp">Sign Up</a> here.
     </c:otherwise>
 </c:choose>
 </body>

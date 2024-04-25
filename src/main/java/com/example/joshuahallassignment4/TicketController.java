@@ -1,7 +1,9 @@
 package com.example.joshuahallassignment4;
 
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +23,13 @@ import java.util.Map;
 @RequestMapping("ticket")
 public class TicketController {
     private volatile int TICKET_ID = 1;
-    private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
+    private final Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
+    private HttpServletRequest request;
+
+    @Autowired
+    public TicketController(HttpServletRequest request) {
+        this.request = request;
+    }
 
     @RequestMapping(value = {"list", ""})
     public String listTickets(Model model){
@@ -56,7 +64,7 @@ public class TicketController {
             ticketDB.put(id, ticket);
         }
 
-        return new RedirectView("ticket/view?id=" + TICKET_ID, true, false);
+        return new RedirectView("/ticket/view/" + TICKET_ID, true, false);
     }
 
 
@@ -80,14 +88,14 @@ public class TicketController {
         Ticket ticket = ticketDB.get(ticketId);
         // no ticket
         if (ticket == null) {
-            return new RedirectView("listTicket", true, false);
+            return new RedirectView("/ticket/list", true, false);
         }
 
         // make sure there is an image
         TicketForm form = new TicketForm();
         Attachment image = (Attachment) form.getAttachment();
         if (image == null) {
-            return new RedirectView("listTicket", true, false);
+            return new RedirectView("/ticket/list", true, false);
         }
 
         // otherwise we have an image, lets download
