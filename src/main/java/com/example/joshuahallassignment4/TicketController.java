@@ -23,13 +23,8 @@ import java.util.Map;
 @RequestMapping("ticket")
 public class TicketController {
     private volatile int TICKET_ID = 1;
-    private final Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
-    private HttpServletRequest request;
+    private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
 
-    @Autowired
-    public TicketController(HttpServletRequest request) {
-        this.request = request;
-    }
 
     @RequestMapping(value = {"list", ""})
     public String listTickets(Model model){
@@ -64,15 +59,15 @@ public class TicketController {
             ticketDB.put(id, ticket);
         }
 
-        return new RedirectView("/ticket/view/" + TICKET_ID, true, false);
+        return new RedirectView("/ticket/view/" + id, true, false);
     }
 
 
-    @GetMapping("view/{ticketId}")
-    public ModelAndView viewPost(Model model, @PathVariable("ticketId")int ticketId) {
+    @GetMapping("ticket/view/{ticketId}")
+    public ModelAndView viewPost(Model model, @PathVariable("ticketId") int ticketId) {
         Ticket ticket = ticketDB.get(ticketId);
         if (ticket == null) {
-            return new ModelAndView(new RedirectView("ticket/list", true, false));
+            return new ModelAndView(new RedirectView("/ticket/list", true, false));
         }
 
         // found the blog, so send it to the view

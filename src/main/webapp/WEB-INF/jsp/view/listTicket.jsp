@@ -22,7 +22,7 @@
 <a href="${pageContext.request.contextPath}/login?logout=true">Logout</a>
 <h2>Tickets</h2>
 <a href="${pageContext.request.contextPath}/ticket/create">Create Ticket</a><br /><br />
-<% if(ticketDatabase.size() == 0) { %>
+<% if(ticketDatabase.isEmpty()) { %>
 <i>There are no tickets in the system.</i>
 <% } else { %>
 <% for(int id : ticketDatabase.keySet()) { %>
@@ -30,7 +30,7 @@
     String idString = Integer.toString(id);
     Ticket ticket = ticketDatabase.get(id);
 %>
-Ticket #<%= idString %>: <a href="${pageContext.request.contextPath}/ticket/view/ticketId=<%= idString %>">
+Ticket #<%= idString %>: <a href="${pageContext.request.contextPath}/ticket/view/<%= idString %>">
     <%= ticket.getSubject() %>
 </a> (customer: <%= ticket.getCustomerName() %>)<br />
 <% } %>
