@@ -59,15 +59,20 @@ public class TicketController {
             ticketDB.put(id, ticket);
         }
 
-        return new RedirectView("/ticket/view/" + id, true, false);
+        return new RedirectView("view/"+id, true, false);
     }
 
+    @GetMapping("view")
+    public ModelAndView viewTicket(){
+        Object viewTicket = null;
+        return new ModelAndView("viewTicket", "ticket", viewTicket);
+    }
 
-    @GetMapping("ticket/view/{ticketId}")
-    public ModelAndView viewPost(Model model, @PathVariable("ticketId") int ticketId) {
+    @PostMapping("view/{ticketId}")
+    public ModelAndView viewTicket(Model model, @PathVariable("ticketId") int ticketId) {
         Ticket ticket = ticketDB.get(ticketId);
         if (ticket == null) {
-            return new ModelAndView(new RedirectView("/ticket/list", true, false));
+            return new ModelAndView(new RedirectView("ticket/list", true, false));
         }
 
         // found the blog, so send it to the view

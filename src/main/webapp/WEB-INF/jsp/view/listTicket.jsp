@@ -5,7 +5,7 @@
   Time: 03:41 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page session="false" import="java.util.Map" %>
+<%@ page import="java.util.Map" %>
 <%@ page import="com.example.joshuahallassignment4.Ticket" %>
 <%
     @SuppressWarnings("unchecked")
