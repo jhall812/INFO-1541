@@ -62,13 +62,13 @@ public class TicketController {
         return new RedirectView("view/"+id, true, false);
     }
 
-    @GetMapping("view")
-    public ModelAndView viewTicket(){
-        Object viewTicket = null;
-        return new ModelAndView("viewTicket", "ticket", viewTicket);
-    }
+//    @GetMapping("view")
+//    public ModelAndView viewTicket(){
+//        Object viewTicket = null;
+//        return new ModelAndView("viewTicket", "ticket", viewTicket);
+//    }
 
-    @PostMapping("view/{ticketId}")
+    @GetMapping("view/{ticketId}")
     public ModelAndView viewTicket(Model model, @PathVariable("ticketId") int ticketId) {
         Ticket ticket = ticketDB.get(ticketId);
         if (ticket == null) {
