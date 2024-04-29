@@ -1,9 +1,8 @@
 package com.example.joshuahallassignment4;
 
 
-import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,11 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -62,12 +58,6 @@ public class TicketController {
         return new RedirectView("view/"+id, true, false);
     }
 
-//    @GetMapping("view")
-//    public ModelAndView viewTicket(){
-//        Object viewTicket = null;
-//        return new ModelAndView("viewTicket", "ticket", viewTicket);
-//    }
-
     @GetMapping("view/{ticketId}")
     public ModelAndView viewTicket(Model model, @PathVariable("ticketId") int ticketId) {
         Ticket ticket = ticketDB.get(ticketId);
@@ -80,7 +70,6 @@ public class TicketController {
         model.addAttribute("ticket", ticket);
 
         return new ModelAndView("viewTicket");
-
     }
 
     @GetMapping("/{ticketId}/image/{image:.+}")

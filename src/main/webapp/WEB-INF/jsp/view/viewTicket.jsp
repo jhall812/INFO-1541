@@ -1,5 +1,6 @@
 <%@ page import="com.example.joshuahallassignment4.Ticket" %>
 <%@ page import="com.example.joshuahallassignment4.Attachment" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: joshc
@@ -18,27 +19,22 @@
     <title>Customer Support</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/login?logout=true">Logout</a>
-<h2>Ticket #<%= ticketId %>: <%= ticket.getSubject()%>  </h2>
-<i>Customer Name - <%= ticket.getCustomerName() %></i><br /><br />
-<%= ticket.getBody() %><br /><br />
-<%
-    if(ticket.getNumberOfAttachments() > 0){
-        %>Attachments: <%
-        int i = 0;
-        for(Attachment a : ticket.getAttachments()){
-            if(i++ > 0)
-                System.out.print(", ");
-            %><a href="${pageContext.request.contextPath}ticket?action=download&ticketId=<%= ticketId %>&attachment=<%= a.getName() %>"><%= a.getName() %></a><%
-            }
-
-        }
-
-%>
-
-
+<a href="${pageContext.request.contextPath}/logout">Logout</a>
+<h2>Ticket #${ticketId}: ${ticket.subject} </h2>
+<i>Customer Name - ${ticket.customerName}</i><br /><br />
+${ticket.body}<br /><br />
+<c:if test="${ticket.numberOfAttachments > 0}">
+    Attachments:
+    <c:forEach var="attachment" items="${ticket.attachments()}" varStatus="loop">
+        <c:if test="${loop.index > 0}">
+            ,
+        </c:if>
+        <a href="${pageContext.request.contextPath}ticket?action=download&ticketId=${ticketId}&attachment=${attachment.getName()}">${attachment.getName()}</a>
+    </c:forEach>
+</c:if>
 <br>
-<a href="${pageContext.request.contextPath}/ticket?action=list">Return</a>
+
+<a href="${pageContext.request.contextPath}/ticket/list">Return</a>
 
 </body>
 </html>

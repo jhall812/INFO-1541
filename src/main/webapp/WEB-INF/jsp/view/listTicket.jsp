@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: joshc
@@ -19,35 +20,26 @@
 </head>
 <body>
 <a href="<%= request.getContextPath() %>/login">Login</a>
-<a href="${pageContext.request.contextPath}/login?logout=true">Logout</a>
+<a href="${pageContext.request.contextPath}/logout">Logout</a>
 <h2>Tickets</h2>
 <a href="${pageContext.request.contextPath}/ticket/create">Create Ticket</a><br /><br />
-<% if(ticketDatabase.isEmpty()) { %>
-<i>There are no tickets in the system.</i>
-<% } else { %>
-<% for(int id : ticketDatabase.keySet()) { %>
-<%
-    String idString = Integer.toString(id);
-    Ticket ticket = ticketDatabase.get(id);
-%>
-Ticket #<%= idString %>: <a href="${pageContext.request.contextPath}/ticket/view/<%= idString %>">
-    <%= ticket.getSubject() %>
-</a> (customer: <%= ticket.getCustomerName() %>)<br />
-<% } %>
-<% } %>
+<c:choose>
+    <c:when test="${empty ticketDatabase}">
+        <i>There are no tickets in the system</i>
+    </c:when>
+    <c:otherwise>
+        <c:forEach var="entry" items="${ticketDatabase}">
+            <c:set var="idString" value="${entry.key}"/>
+            <c:set var="ticket" value="${entry.value}"/>
+            Ticket #<c:out value="${idString}"/>:
+            <a href="${pageContext.request.contextPath}/ticket/view/${idString}">
+                <c:out value="${ticket.subject}"/>
+            </a>
+            (customer: <c:out value="${ticket.customerName}"/><br />
+        </c:forEach>
+    </c:otherwise>
+</c:choose>
 
-<%--<c:choose>--%>
-<%--    <c:when test="${ticketDatabase.size() == 0}">--%>
-<%--        <p>There are no tickets in the system.</p>--%>
-<%--    </c:when>--%>
-<%--    <c:otherwise>--%>
-<%--        <c:forEach var="ticket" items="${ticketDatabase}">--%>
-<%--            Blog#:&nbsp;<c:out value="${ticket.key}"/>--%>
-<%--            <a href="<c:url value='/ticket/view/${ticket.key}'/>">--%>
-<%--                <c:out value="${ticket.value.title}"/></a><br>--%>
-<%--        </c:forEach>--%>
-<%--    </c:otherwise>--%>
-<%--</c:choose>--%>
 
 </body>
 </html>
