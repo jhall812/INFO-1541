@@ -1,5 +1,3 @@
-<%@ page import="com.example.joshuahallassignment4.Ticket" %>
-<%@ page import="com.example.joshuahallassignment4.Attachment" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -9,10 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String ticketId = (String)request.getAttribute("ticketId");
-    Ticket ticket = (Ticket)request.getAttribute("ticket");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,11 +19,10 @@
 ${ticket.body}<br /><br />
 <c:if test="${ticket.numberOfAttachments > 0}">
     Attachments:
-    <c:forEach var="attachment" items="${ticket.attachments()}" varStatus="loop">
+    <c:forEach var="attachment" items="${ticket.attachments}" varStatus="loop">
         <c:if test="${loop.index > 0}">
-            ,
         </c:if>
-        <a href="${pageContext.request.contextPath}ticket?action=download&ticketId=${ticketId}&attachment=${attachment.getName()}">${attachment.getName()}</a>
+        <a href="${pageContext.request.contextPath}/ticket/${ticketId}/image=${attachment.name}">${attachment.name}</a>
     </c:forEach>
 </c:if>
 <br>
