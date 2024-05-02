@@ -1,3 +1,4 @@
+<%--suppress CheckTagEmptyBody --%>
 <%--
   Created by IntelliJ IDEA.
   User: joshc
@@ -14,7 +15,7 @@
 <h2>Login</h2>
 You must log in to access the website.<br><br>
 <c:if test="${loginFailed == true}">
-    <b><c:out value="The username or password you enteres are not correct, Please try again."></c:out></b><br>
+    <b><c:out value="The username or password you have entered are not correct, Please try again."></c:out></b>
 </c:if>
 <form:form method="POST" action="login" modelAttribute="loginForm">
     <form:label path="username">Username:&nbsp;</form:label>
