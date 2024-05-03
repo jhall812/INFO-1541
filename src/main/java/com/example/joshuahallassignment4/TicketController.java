@@ -81,8 +81,7 @@ public class TicketController {
         }
 
         // make sure there is an image
-        TicketForm form = new TicketForm();
-        Attachment image = (Attachment) form.getAttachment();
+        Attachment image = (Attachment) ticket.getAttachments();
         if (image == null) {
             return new RedirectView("/ticket/list", true, false);
         }
