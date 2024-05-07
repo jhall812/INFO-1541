@@ -1,4 +1,4 @@
-package com.example.joshuahallassignment4;
+package joshuahallassignment4.Site;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

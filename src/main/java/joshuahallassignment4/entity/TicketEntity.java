@@ -1,4 +1,4 @@
-package entity;
+package joshuahallassignment4.entity;
 
 import jakarta.persistence.*;
 

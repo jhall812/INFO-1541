@@ -1,4 +1,4 @@
-package entity;
+package joshuahallassignment4.entity;
 
 import jakarta.persistence.*;
 import jakarta.servlet.http.HttpSession;

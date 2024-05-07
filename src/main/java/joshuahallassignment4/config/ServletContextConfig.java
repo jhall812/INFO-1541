@@ -1,4 +1,4 @@
-package config;
+package joshuahallassignment4.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.example.joshuahallassignment4",
+@ComponentScan(basePackages = "joshuahallassignment4",
         useDefaultFilters = false,
         includeFilters = @ComponentScan.Filter(Controller.class))
 public class ServletContextConfig implements WebMvcConfigurer {
