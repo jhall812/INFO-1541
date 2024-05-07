@@ -1,9 +1,12 @@
 package joshuahallassignment4.Site;
 
+import joshuahallassignment4.entity.Attachment;
+
 import java.util.List;
 import java.util.ArrayList;
 
 public class Ticket {
+    private long id;
     private String customername;
     private String subject;
     private String body;
@@ -24,6 +27,14 @@ public class Ticket {
             this.attachments = new ArrayList<>();
         else
             this.attachments = attachments;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCustomerName(){
@@ -50,16 +61,8 @@ public class Ticket {
         this.body = body;
     }
 
-    public List<Attachment> getAttachments(){
-        return attachments;
-    }
-
-    public Attachment getIndividualAttachment(int pos)
-    {
-        if (this.attachments.size() >= pos-1)
-            return this.attachments.get(pos-1);
-        else
-            return null;
+    public Attachment getAttachments(){
+        return (Attachment) attachments;
     }
 
     public void setAttachments(List<Attachment> attachments){
@@ -76,5 +79,9 @@ public class Ticket {
 
     public List<Attachment> getAllAttachments(){
         return attachments;
+    }
+
+    public boolean hasImage() {
+        return attachments != null && Attachment.getName().length() > 0 && Attachment.getContents().length > 0;
     }
 }

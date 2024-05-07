@@ -13,23 +13,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cce74b4-5747-4bb3-a6d9-974ec4468751" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/Attachment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/AuthenticationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/AuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/DownloadView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/IndexController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/SessionListController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/SessionListUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/SessionListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/Ticket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/TicketController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joshuahallassignment4/TicketRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/Bootstrap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/RootContextConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/ServletContextConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Attachment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/TicketEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/UserPrincipal.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/AttachmentRespository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/AuthenticationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultAttachmentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultAuthenticationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultTicketRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultTicketService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultUserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/GenericBaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/GenericJpaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/UserPrincipalRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/Attachment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/GenericRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/GenericRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/entity/Attachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/entity/Attachment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/AttachmentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/AttachmentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/TicketTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/TicketTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,34 +77,37 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2eMlvH8YZqiENXyecXJ6Od5pvE5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/joshc/IdeaProjects/INFO 1541/BlogWebApp&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.37514383&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;71dbc626d3cd9c608abc67f36053f9af&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/joshc/IdeaProjects/INFO 1541/BlogWebApp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.37514383",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "spring.configuration.checksum": "71dbc626d3cd9c608abc67f36053f9af",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -268,7 +275,7 @@
       <workItem from="1714677749981" duration="3764000" />
       <workItem from="1714776571788" duration="235000" />
       <workItem from="1715092927104" duration="2404000" />
-      <workItem from="1715095359393" duration="2096000" />
+      <workItem from="1715095359393" duration="6162000" />
     </task>
     <servers />
   </component>
@@ -285,5 +292,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

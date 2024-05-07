@@ -4,17 +4,17 @@ package joshuahallassignment4.entity;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.*;
 
 @Entity
 @Table(name = "attachments")
-public class Attachment implements Serializable {
+public class Attachment implements Serializable{
     private static final long serialVersionUID = 1L;
     private long id;
     private long ticketId;
-    private String name;
+    private static String name;
     @Lob
-    private byte[] contents;
+    private static byte[] contents;
 
 
     @Id
@@ -30,12 +30,12 @@ public class Attachment implements Serializable {
     public void setTicketId(long ticketId){this.ticketId = ticketId;}
 
     @Basic
-    public String getName(){return name;}
+    public static String getName(){return name;}
 
     public void setName(String name){this.name = name;}
 
     @Lob
-    public byte[] getContents(){return contents;}
+    public static byte[] getContents(){return contents;}
 
     public void setContents(byte[] contents){this.contents = contents;}
 
@@ -45,5 +45,9 @@ public class Attachment implements Serializable {
                 "name='" + name + '\'' +
                 ", contents=" + Arrays.toString(contents) +
                 '}';
+    }
+
+    public int size() {
+        return 0;
     }
 }

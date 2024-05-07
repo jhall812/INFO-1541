@@ -1,7 +1,8 @@
 package joshuahallassignment4.Site;
 
 
-
+import joshuahallassignment4.entity.Attachment;
+import jakarta.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +19,13 @@ import java.util.Map;
 @Controller
 @RequestMapping("ticket")
 public class TicketController {
-    private volatile int TICKET_ID = 1;
-    private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
+//    private volatile int TICKET_ID = 1;
+//    private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
 
-
+    @Inject TicketService ticketService;
     @RequestMapping(value = {"list", ""})
     public String listTickets(Model model){
-        model.addAttribute("ticketDatabase", ticketDB);
+        model.addAttribute("ticketDatabase", ticketService.getAllTickets());
         return "listTicket";
     }
 
@@ -49,18 +50,20 @@ public class TicketController {
             ticket.addAttachment(image);
         }
 
-        int id;
-        synchronized(this) {
-            id = this.TICKET_ID++;
-            ticketDB.put(id, ticket);
-        }
+//        int id;
+//        synchronized(this) {
+//            id = this.TICKET_ID++;
+//            ticketDB.put(id, ticket);
+//        }
 
-        return new RedirectView("view/"+id, true, false);
+        ticketService.save(ticket);
+
+        return new RedirectView("view/"+ticket.getId(), true, false);
     }
 
     @GetMapping("view/{ticketId}")
     public ModelAndView viewTicket(Model model, @PathVariable("ticketId") int ticketId) {
-        Ticket ticket = ticketDB.get(ticketId);
+        Ticket ticket = ticketService.getTicket(ticketId);
         if (ticket == null) {
             return new ModelAndView(new RedirectView("ticket/list", true, false));
         }
@@ -74,14 +77,14 @@ public class TicketController {
 
     @GetMapping("/{ticketId}/image/{image:.+}")
     public View downloadImage(@PathVariable("ticketId")int ticketId, @PathVariable("image") String name) {
-        Ticket ticket = ticketDB.get(ticketId);
+        Ticket ticket = ticketService.getTicket(ticketId);
         // no ticket
         if (ticket == null) {
             return new RedirectView("/ticket/list", true, false);
         }
 
         // make sure there is an image
-        Attachment image = (Attachment) ticket.getAttachments();
+        joshuahallassignment4.entity.Attachment image =  ticket.getAttachments();
         if (image == null) {
             return new RedirectView("/ticket/list", true, false);
         }
