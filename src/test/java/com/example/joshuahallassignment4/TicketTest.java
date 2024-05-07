@@ -1,6 +1,7 @@
 package com.example.joshuahallassignment4;
 
-import com.beust.ah.A;
+import com.example.joshuahallassignment4.site.Attachment;
+import com.example.joshuahallassignment4.site.Ticket;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;

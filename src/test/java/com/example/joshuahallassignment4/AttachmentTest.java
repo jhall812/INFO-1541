@@ -1,5 +1,6 @@
 package com.example.joshuahallassignment4;
 
+import com.example.joshuahallassignment4.site.Attachment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

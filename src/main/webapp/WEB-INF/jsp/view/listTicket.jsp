@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="java.util.Map" %>
-<%@ page import="com.example.joshuahallassignment4.Ticket" %>
+<%@ page import="com.example.joshuahallassignment4.site.Ticket" %>
 <%
     @SuppressWarnings("unchecked")
     Map<Integer, Ticket> ticketDatabase =
