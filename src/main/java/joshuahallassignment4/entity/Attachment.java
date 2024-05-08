@@ -10,34 +10,40 @@ import java.util.*;
 @Table(name = "attachments")
 public class Attachment implements Serializable{
     private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long ticketId;
-    private static String name;
+    private String name;
     @Lob
-    private static byte[] contents;
+    private byte[] contents;
 
 
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public long getId(){return id;}
 
     public void setId(long id){this.id = id;}
 
-    @Basic
+    @Column(name = "ticket_id")
     public long getTicketId(){return ticketId;}
 
     public void setTicketId(long ticketId){this.ticketId = ticketId;}
 
-    @Basic
-    public static String getName(){return name;}
+    public String getName(){
+        return name;
+    }
 
-    public void setName(String name){this.name = name;}
+    public void setName(String name){
+        this.name = name;
+    }
 
-    @Lob
-    public static byte[] getContents(){return contents;}
+    public byte[] getContents(){
+        return contents;
+    }
 
-    public void setContents(byte[] contents){this.contents = contents;}
+    public void setContents(byte[] contents){
+        this.contents= contents;
+    }
 
     @Override
     public String toString() {

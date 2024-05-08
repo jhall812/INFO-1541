@@ -13,27 +13,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cce74b4-5747-4bb3-a6d9-974ec4468751" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/AttachmentRespository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/AuthenticationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultAttachmentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultAuthenticationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultTicketRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultTicketService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/GenericBaseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/GenericJpaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/UserPrincipalRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/Attachment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/GenericRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/GenericRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultTicketService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/entity/Attachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/entity/Attachment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/AttachmentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/AttachmentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/TicketTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/joshuahallassignment4/TicketTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +258,7 @@
       <workItem from="1714677749981" duration="3764000" />
       <workItem from="1714776571788" duration="235000" />
       <workItem from="1715092927104" duration="2404000" />
-      <workItem from="1715095359393" duration="6162000" />
+      <workItem from="1715095359393" duration="8553000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,6 @@
 package joshuahallassignment4.Site;
 
+import joshuahallassignment4.entity.Attachment;
 import joshuahallassignment4.entity.TicketEntity;
 import jakarta.inject.Inject;
 import org.springframework.stereotype.Service;
@@ -35,8 +36,10 @@ public class DefaultTicketService implements TicketService {
         ticket.setSubject(entity.getSubject());
         ticket.setBody(entity.getBody());
         // look up the image in repo
-        ticket.setAttachments(attachmentRepo.getByTicketId(entity.getTicketId()));
-        // do i need to check if image is null?
+        Attachment attachment = attachmentRepo.getByTicketId(entity.getTicketId());
+        if (attachment != null){
+            ticket.setAttachments(attachment);
+        }
 
         return ticket;
     }

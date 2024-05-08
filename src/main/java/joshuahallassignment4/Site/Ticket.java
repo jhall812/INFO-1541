@@ -10,23 +10,18 @@ public class Ticket {
     private String customername;
     private String subject;
     private String body;
-    private List<Attachment> attachments;
+    private Attachment attachment;
 
     public Ticket(){
         this.customername = "";
         this.subject = "";
         this.body = "";
-        this.attachments = new ArrayList<>();
     }
 
-    public Ticket(String customername, String subject, String body, ArrayList<Attachment> attachments){
+    public Ticket(String customername, String subject, String body){
         this.customername = customername;
         this.subject = subject;
         this.body = body;
-        if (attachments == null)
-            this.attachments = new ArrayList<>();
-        else
-            this.attachments = attachments;
     }
 
     public long getId() {
@@ -62,26 +57,26 @@ public class Ticket {
     }
 
     public Attachment getAttachments(){
-        return (Attachment) attachments;
+        return attachment;
     }
 
-    public void setAttachments(List<Attachment> attachments){
-        this.attachments = attachments;
+    public void setAttachments(Attachment attachment){
+        this.attachment = attachment;
     }
 
     public void addAttachment(Attachment attachment){
-        this.attachments.add(attachment);
+        this.attachment = attachment;
     }
 
     public int getNumberOfAttachments(){
-        return attachments.size();
+        return attachment != null ? 1 : 0;
     }
 
-    public List<Attachment> getAllAttachments(){
-        return attachments;
+    public Attachment getAllAttachments(){
+        return attachment;
     }
 
     public boolean hasImage() {
-        return attachments != null && Attachment.getName().length() > 0 && Attachment.getContents().length > 0;
+        return attachment != null && Attachment.getName() > 0 && Attachment.getContents() > 0;
     }
 }
