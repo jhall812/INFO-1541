@@ -14,9 +14,14 @@
   <component name="ChangeListManager">
     <list default="true" id="0cce74b4-5747-4bb3-a6d9-974ec4468751" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultAttachmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultAttachmentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultTicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/DefaultTicketService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/entity/Attachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/entity/Attachment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/TicketRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/UserPrincipalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/Site/UserPrincipalRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/config/RootContextConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/joshuahallassignment4/config/RootContextConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/listTicket.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view/listTicket.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +194,37 @@
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="58791" />
       </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
@@ -258,7 +293,7 @@
       <workItem from="1714677749981" duration="3764000" />
       <workItem from="1714776571788" duration="235000" />
       <workItem from="1715092927104" duration="2404000" />
-      <workItem from="1715095359393" duration="8553000" />
+      <workItem from="1715095359393" duration="13360000" />
     </task>
     <servers />
   </component>

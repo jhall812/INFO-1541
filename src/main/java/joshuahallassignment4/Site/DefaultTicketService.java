@@ -35,14 +35,15 @@ public class DefaultTicketService implements TicketService {
         ticket.setCustomerName(entity.getCustomerName());
         ticket.setSubject(entity.getSubject());
         ticket.setBody(entity.getBody());
-        // look up the image in repo
-        Attachment attachment = attachmentRepo.getByTicketId(entity.getTicketId());
-        if (attachment != null){
-            ticket.setAttachments(attachment);
+        // look up the attachments in repo
+        List<Attachment> attachments = attachmentRepo.getByTicketId(entity.getTicketId());
+        if (attachments != null && !attachments.isEmpty()) {
+            ticket.setAttachments(attachments);
         }
 
         return ticket;
     }
+
 
     @Override
     @Transactional

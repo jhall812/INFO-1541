@@ -6,13 +6,6 @@
   Time: 03:41 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="java.util.Map" %>
-<%@ page import="com.example.joshuahallassignment4.site.Ticket" %>
-<%
-    @SuppressWarnings("unchecked")
-    Map<Integer, Ticket> ticketDatabase =
-            (Map<Integer, Ticket>)request.getAttribute("ticketDatabase");
-%>
 <!DOCTYPE html>
 <html>
 <head>

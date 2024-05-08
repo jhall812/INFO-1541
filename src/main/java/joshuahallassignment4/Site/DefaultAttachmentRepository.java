@@ -11,7 +11,9 @@ public class DefaultAttachmentRepository extends GenericJpaRepository<Long, Atta
     @Override
     public List<Attachment> getByTicketId(Long ticketId) {
         try {
-            return this.entityManager.createQuery("SELECT i FROM Attachment i WHERE i.ticketId = :id", Attachment.class).setParameter("id", ticketId).getSingleResult();
+            return this.entityManager.createQuery("SELECT i FROM Attachment i WHERE i.ticketId = :id", Attachment.class)
+                    .setParameter("id", ticketId)
+                    .getResultList();
         }
         catch(Exception e) {
             return null;

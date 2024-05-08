@@ -10,18 +10,23 @@ public class Ticket {
     private String customername;
     private String subject;
     private String body;
-    private Attachment attachment;
+    private List<Attachment> attachments;
 
     public Ticket(){
         this.customername = "";
         this.subject = "";
         this.body = "";
+        this.attachments = new ArrayList<>();
     }
 
-    public Ticket(String customername, String subject, String body){
+    public Ticket(String customername, String subject, String body, ArrayList<Attachment> attachments){
         this.customername = customername;
         this.subject = subject;
         this.body = body;
+        if (attachments == null)
+            this.attachments = new ArrayList<>();
+        else
+            this.attachments = attachments;
     }
 
     public long getId() {
@@ -57,26 +62,35 @@ public class Ticket {
     }
 
     public Attachment getAttachments(){
-        return attachment;
+        return (Attachment) attachments;
     }
 
-    public void setAttachments(Attachment attachment){
-        this.attachment = attachment;
+    public void setAttachments(List<Attachment> attachments){
+        this.attachments = attachments;
     }
 
     public void addAttachment(Attachment attachment){
-        this.attachment = attachment;
+        this.attachments.add(attachment);
     }
 
     public int getNumberOfAttachments(){
-        return attachment != null ? 1 : 0;
+        return attachments.size();
     }
 
-    public Attachment getAllAttachments(){
-        return attachment;
+    public List<Attachment> getAllAttachments(){
+        return attachments;
     }
 
     public boolean hasImage() {
-        return attachment != null && Attachment.getName() > 0 && Attachment.getContents() > 0;
+        if (attachments != null && !attachments.isEmpty()) {
+            for (Attachment att : attachments) {
+                if (att.getName() != null && att.getName().length() > 0 &&
+                        att.getContents() != null && att.getContents().length > 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
+
 }
